@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:peminjaman_buku/screens/loginScreen.dart';
+import 'package:peminjaman_buku/views/loginScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'package:peminjaman_buku/models/user.dart';
-import 'package:peminjaman_buku/screens/welcomeScreen.dart';
+import 'package:peminjaman_buku/views/welcomeScreen.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
