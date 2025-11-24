@@ -20,7 +20,7 @@ class StorageService {
           genre: "Teknologi",
           pricePerDay: 5000,
           coverUrl: "https://picsum.photos/seed/book1/300/400",
-          synopsis: "Belajar membuat aplikasi mobile dengan Flutter dari nol.",
+          synopsis: "Belajar membuat aplikasi mobile dengan Flutter dari awal.",
         ),
         Book(
           id: "2",
