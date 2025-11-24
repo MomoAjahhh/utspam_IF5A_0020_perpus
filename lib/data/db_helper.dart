@@ -69,7 +69,7 @@ class DbHelper {
           'id': "1",
           'title': "Pemrograman Flutter Dasar",
           'genre': "Teknologi",
-          'pricePerDay': 5000,
+          'pricePerDay': 20000,
           'coverUrl': "https://picsum.photos/seed/book1/300/400",
           'synopsis': "Belajar membuat aplikasi mobile dengan Flutter dari nol.",
         },
