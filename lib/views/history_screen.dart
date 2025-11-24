@@ -71,7 +71,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     ),
                   ),
                   title: Text(
-                    trans.book.title,
+                    trans.book?.title ?? "Judul Buku",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   subtitle: Column(
