@@ -9,7 +9,7 @@ class Transaction {
   int totalBiaya;
   String status;
 
-  // Tambahan: objek Book
+  
   Book? book;
 
   Transaction({
@@ -20,7 +20,7 @@ class Transaction {
     required this.durasiPinjam,
     required this.totalBiaya,
     required this.status,
-    this.book, // tambahan
+    this.book,
   });
 
   Transaction copyWith({
@@ -54,7 +54,7 @@ class Transaction {
       'durasi_pinjam': durasiPinjam,
       'total_biaya': totalBiaya,
       'status': status,
-      // Book tidak ikut disimpan ke database
+      
     };
   }
 
@@ -67,7 +67,7 @@ class Transaction {
       durasiPinjam: map['durasi_pinjam'],
       totalBiaya: map['total_biaya'],
       status: map['status'],
-      // book nanti diisi manual ketika load data
+      
     );
   }
 }

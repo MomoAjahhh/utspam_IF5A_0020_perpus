@@ -82,11 +82,11 @@ class DbHelper {
           'synopsis': "Buku klasik algoritma dengan contoh bahasa C dan Java.",
         },
         {
-          'id': "3", // String karena model lama pakai String
-          'title': "Novel 1984", // ← judul sesuai DB
+          'id': "3", 
+          'title': "Novel 1984", 
           'genre': "Novel",
-          'pricePerDay': 30000, // ← harga_rental
-          'coverUrl': "assets/images/1984.jpg", // ← pakai asset lokal
+          'pricePerDay': 30000, 
+          'coverUrl': "assets/images/1984.jpg", 
           'synopsis':
               "Novel “1984” bercerita tentang suatu masa di sekitar tahun 1984. Orwell menggambarkan masa itu sebagai masa yang penuh penderitaan...",
         },

@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Perpus App',
-      home: WelcomeScreen(), // atau LoginScreen()
+      home: WelcomeScreen(), 
       debugShowCheckedModeBanner: false,
     );
   }

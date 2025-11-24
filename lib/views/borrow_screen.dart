@@ -83,9 +83,7 @@ class _BorrowScreenState extends State<BorrowScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              //
-              // INFO BUKU
-              //
+              
               Text(
                 widget.book.id,
                 style: const TextStyle(
@@ -94,9 +92,7 @@ class _BorrowScreenState extends State<BorrowScreen> {
               Text(widget.book.genre),
               SizedBox(height: 20),
 
-              //
-              // INPUT TANGGAL MULAI
-              //
+              
               TextFormField(
                 controller: tglCtr,
                 readOnly: true,
@@ -107,9 +103,7 @@ class _BorrowScreenState extends State<BorrowScreen> {
               ),
               SizedBox(height: 20),
 
-              //
-              // DURASI PINJAM
-              //
+              
               TextFormField(
                 controller: durasiCtr,
                 keyboardType: TextInputType.number,
@@ -126,9 +120,7 @@ class _BorrowScreenState extends State<BorrowScreen> {
               ),
               SizedBox(height: 20),
 
-              //
-              // TOTAL BIAYA
-              //
+              
               Text(
                 "Total Biaya: Rp $total",
                 style: const TextStyle(
@@ -137,9 +129,6 @@ class _BorrowScreenState extends State<BorrowScreen> {
 
               const Spacer(),
 
-              //
-              // TOMBOL SIMPAN
-              //
               SizedBox(
                 width: double.infinity,
                 height: 50,

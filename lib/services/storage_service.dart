@@ -10,7 +10,6 @@ class StorageService {
   static const String _transactionsKey = 'transactions';
   static const String _currentUserKey = 'current_user';
 
-  // DUMMY BOOKS
   static Future<void> initDummyData() async {
     final prefs = await SharedPreferences.getInstance();
     if (prefs.getString(_booksKey) == null) {
@@ -32,11 +31,11 @@ class StorageService {
           synopsis: "Buku klasik algoritma dengan contoh bahasa C dan Java.",
         ),
         Book(
-          id: "3", // String karena model lama pakai String
-          title: "Novel 1984", // ← judul sesuai DB
+          id: "3", 
+          title: "Novel 1984", 
           genre: "Novel",
-          pricePerDay: 30000, // ← harga_rental
-          coverUrl: "assets/images/1984.jpg", // ← pakai asset lokal
+          pricePerDay: 30000, 
+          coverUrl: "assets/images/1984.jpg", 
           synopsis:
               "Novel “1984” bercerita tentang suatu masa di sekitar tahun 1984. Orwell menggambarkan masa itu sebagai masa yang penuh penderitaan...",
         ),
@@ -67,7 +66,7 @@ class StorageService {
     }
   }
 
-  // REGISTER USER
+  
   static Future<void> registerUser(User user) async {
     final prefs = await SharedPreferences.getInstance();
     final data = prefs.getString(_usersKey);
@@ -76,7 +75,7 @@ class StorageService {
         ? []
         : (jsonDecode(data) as List).map((e) => User.fromJson(e)).toList();
 
-    // Cek email & username unik
+    
     if (users.any(
       (u) => u.email == user.email || u.username == user.username,
     )) {
@@ -91,7 +90,7 @@ class StorageService {
     );
   }
 
-  // LOGIN USER
+  
   static Future<User?> login(String identifier, String password) async {
     final prefs = await SharedPreferences.getInstance();
     final String? usersJson = prefs.getString(_usersKey);
@@ -105,12 +104,12 @@ class StorageService {
       (u) =>
           (u.email == identifier || u.nik == identifier) &&
           u.password == password,
-      orElse: () => User.empty(), // ✔ aman
+      orElse: () => User.empty(), 
     );
 
-    if (user.isEmpty) return null; // ✔ cek gagal login
+    if (user.isEmpty) return null; 
 
-    // simpan user yg login
+    
     await prefs.setString(_currentUserKey, jsonEncode(user.toJson()));
     return user;
   }
@@ -127,7 +126,7 @@ class StorageService {
     await prefs.remove(_currentUserKey);
   }
 
-  // BOOKS
+  
   static Future<List<Book>> getBooks() async {
     final prefs = await SharedPreferences.getInstance();
     final json = prefs.getString(_booksKey);
@@ -136,7 +135,7 @@ class StorageService {
     return (jsonDecode(json) as List).map((e) => Book.fromJson(e)).toList();
   }
 
-  // TRANSACTIONS
+  
   static Future<List<Transaction>> getTransactions() async {
     final prefs = await SharedPreferences.getInstance();
     final json = prefs.getString(_transactionsKey);

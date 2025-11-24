@@ -37,7 +37,6 @@ class User {
         'password': password,
       };
 
-  // === Tambahan penting supaya StorageService TIDAK ERROR ===
   bool get isEmpty => fullName.isEmpty;
 
   static User empty() => User(

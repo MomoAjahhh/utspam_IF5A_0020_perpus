@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _loadUserData();
   }
 
-  // Ambil nama dari SharedPreferences
+  
   Future<void> _loadUserData() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  // Logout
+  
   Future<void> _handleLogout() async {
     showDialog(
       context: context,
@@ -68,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.grey[50],
       body: Column(
         children: [
-          // HEADER
+          
           Container(
             width: double.infinity,
             padding: const EdgeInsets.only(top: 50, left: 24, right: 24, bottom: 24),
@@ -113,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
 
-          // MENU GRID
+          
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(24.0),
@@ -165,7 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // Card Menu Reusable
+  
   Widget _buildMenuCard({
     required String title,
     required IconData icon,

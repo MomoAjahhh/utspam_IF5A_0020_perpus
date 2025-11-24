@@ -40,7 +40,7 @@ class ProfileScreenState extends State<ProfileScreen> {
             Text('Alamat: ${_user!.alamat}'),
             Text('Telepon: ${_user!.noTelp}'),
             Text('Username: ${_user!.username}'),
-            // Tambah tombol edit jika perlu, tapi spec tidak wajib
+            
           ],
         ),
       ),

@@ -97,7 +97,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     final db = DbHelper();
                     final conn = await db.database;
 
-                    // Ambil data book berdasarkan ID
+                    
                     final res = await conn.query(
                       "books",
                       where: "id = ?",

@@ -19,7 +19,6 @@ class _BookListScreenState extends State<BookListScreen> {
     books = StorageService.getBooks();
   }
 
-  // helper format harga
   String _formatRupiah(double price) {
     return "Rp $price / hari";
   }
