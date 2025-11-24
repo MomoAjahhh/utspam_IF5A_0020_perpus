@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:peminjaman_buku/views/registerScreen.dart';
-import 'package:peminjaman_buku/views/loginScreen.dart';
+import 'package:peminjaman_buku/views/register_screen.dart';
+import 'package:peminjaman_buku/views/login_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});

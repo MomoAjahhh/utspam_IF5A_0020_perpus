@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'package:peminjaman_buku/models/user.dart';
-import 'package:peminjaman_buku/views/registerScreen.dart';
-import 'package:peminjaman_buku/views/homeScreen.dart';
-import 'package:peminjaman_buku/views/welcomeScreen.dart';
+import 'package:peminjaman_buku/views/register_screen.dart';
+import 'package:peminjaman_buku/views/home_screen.dart';
+import 'package:peminjaman_buku/views/welcome_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -111,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               );
                               await prefs.setString(
                                 'current_user_name',
-                                loggedInUser.nama,
+                                loggedInUser.fullName,
                               );
 
                               _showSnackBar('Login berhasil!', Colors.green);
@@ -120,11 +120,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                 const Duration(milliseconds: 1200),
                               );
 
-                              if (mounted) {
+                              if (context.mounted) {
                                 Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (_) => const HomeScreen(),
+                                    builder: (_) => HomeScreen(),
                                   ),
                                 );
                               }

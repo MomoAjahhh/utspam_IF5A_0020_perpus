@@ -1,47 +1,73 @@
+import 'book.dart';
+
 class Transaction {
-  final String id;
-  final String bookId;
-  final String bookTitle;
-  final String bookCover;
-  final String userEmail;
-  final int days;
-  final int totalPrice;
-  final DateTime borrowDate;
-  String status; 
+  int? id;
+  int bookId;
+  int userId;
+  String tglPinjam;
+  int durasiPinjam;
+  int totalBiaya;
+  String status;
+
+  // Tambahan: objek Book
+  Book? book;
 
   Transaction({
-    required this.id,
+    this.id,
     required this.bookId,
-    required this.bookTitle,
-    required this.bookCover,
-    required this.userEmail,
-    required this.days,
-    required this.totalPrice,
-    required this.borrowDate,
-    this.status = "dipinjam",
+    required this.userId,
+    required this.tglPinjam,
+    required this.durasiPinjam,
+    required this.totalBiaya,
+    required this.status,
+    this.book, // tambahan
   });
 
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'bookId': bookId,
-        'bookTitle': bookTitle,
-        'bookCover': bookCover,
-        'userEmail': userEmail,
-        'days': days,
-        'totalPrice': totalPrice,
-        'borrowDate': borrowDate.toIso8601String(),
-        'status': status,
-      };
+  Transaction copyWith({
+    int? id,
+    int? bookId,
+    int? userId,
+    String? tglPinjam,
+    int? durasiPinjam,
+    int? totalBiaya,
+    String? status,
+    Book? book,
+  }) {
+    return Transaction(
+      id: id ?? this.id,
+      bookId: bookId ?? this.bookId,
+      userId: userId ?? this.userId,
+      tglPinjam: tglPinjam ?? this.tglPinjam,
+      durasiPinjam: durasiPinjam ?? this.durasiPinjam,
+      totalBiaya: totalBiaya ?? this.totalBiaya,
+      status: status ?? this.status,
+      book: book ?? this.book, // tambahan
+    );
+  }
 
-  factory Transaction.fromJson(Map<String, dynamic> json) => Transaction(
-        id: json['id'],
-        bookId: json['bookId'],
-        bookTitle: json['bookTitle'],
-        bookCover: json['bookCover'],
-        userEmail: json['userEmail'],
-        days: json['days'],
-        totalPrice: json['totalPrice'],
-        borrowDate: DateTime.parse(json['borrowDate']),
-        status: json['status'] ?? "dipinjam",
-      );
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'book_id': bookId,
+      'user_id': userId,
+      'tgl_pinjam': tglPinjam,
+      'durasi_pinjam': durasiPinjam,
+      'total_biaya': totalBiaya,
+      'status': status,
+      // Book tidak ikut disimpan ke database
+    };
+  }
+
+  factory Transaction.fromMap(Map<String, dynamic> map) {
+    return Transaction(
+      id: map['id'],
+      bookId: map['book_id'],
+      userId: map['user_id'],
+      tglPinjam: map['tgl_pinjam'],
+      durasiPinjam: map['durasi_pinjam'],
+      totalBiaya: map['total_biaya'],
+      status: map['status'],
+      // book nanti diisi manual ketika load data
+    );
+  }
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:peminjaman_buku/views/loginScreen.dart';
+import 'package:peminjaman_buku/views/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'package:peminjaman_buku/models/user.dart';
-import 'package:peminjaman_buku/views/welcomeScreen.dart';
+import 'package:peminjaman_buku/views/welcome_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -148,7 +148,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
                     final newUser = User(
-                      nama: _namaController.text.trim(),
+                      fullName: _namaController.text.trim(),
                       nik: _nikController.text.trim(),
                       email: _emailController.text.trim().toLowerCase(),
                       password: _passwordController.text,
@@ -175,6 +175,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           u.nik == newUser.nik,
                     );
 
+                    
                     if (isDuplicate) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
@@ -192,8 +193,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     );
 
                     await prefs.setString('current_user_email', newUser.email);
-                    await prefs.setString('current_user_name', newUser.nama);
+                    await prefs.setString('current_user_name', newUser.fullName);
 
+                    
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                         content: Text('Registrasi berhasil! Sedang masuk...'),
