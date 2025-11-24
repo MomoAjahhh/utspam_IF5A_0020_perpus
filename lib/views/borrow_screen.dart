@@ -74,7 +74,7 @@ class _BorrowScreenState extends State<BorrowScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Pinjam Buku"),
-        backgroundColor: Colors.orange,
+        backgroundColor: Color(0xFF8E2DE2),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
