@@ -105,29 +105,32 @@ class _LoginScreenState extends State<LoginScreen> {
                             }
 
                             if (loggedInUser != null) {
+                              // SIMPAN SESSION DENGAN CARA PALING AMAN (tanpa toJson)
+                              final prefs =
+                                  await SharedPreferences.getInstance();
                               await prefs.setString(
-                                'current_user_email',
-                                loggedInUser.email,
-                              );
-                              await prefs.setString(
-                                'current_user_name',
-                                loggedInUser.fullName,
+                                'current_user',
+                                jsonEncode({
+                                  'nama_lengkap': loggedInUser.fullName,
+                                  'nik': loggedInUser.nik,
+                                  'email': loggedInUser.email,
+                                  'alamat': loggedInUser.alamat,
+                                  'telp': loggedInUser.noTelp,
+                                  'username': loggedInUser.username,
+                                  'password': loggedInUser
+                                      .password, // boleh disimpan karena lokal
+                                }),
                               );
 
                               _showSnackBar('Login berhasil!', Colors.green);
 
-                              await Future.delayed(
-                                const Duration(milliseconds: 1200),
+                              // PAKAI CARA NAVIGASI PALING AMAN
+                              if (!mounted) return;
+                              Navigator.pushNamedAndRemoveUntil(
+                                context,
+                                '/home',
+                                (route) => false,
                               );
-
-                              if (context.mounted) {
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (_) => HomeScreen(),
-                                  ),
-                                );
-                              }
                             } else {
                               _showSnackBar(
                                 'Email/NIK atau password salah!',

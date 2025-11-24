@@ -1,9 +1,10 @@
+// lib/views/register_screen.dart
 import 'package:flutter/material.dart';
-import 'package:peminjaman_buku/views/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'package:peminjaman_buku/models/user.dart';
 import 'package:peminjaman_buku/views/welcome_screen.dart';
+import 'package:peminjaman_buku/views/login_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -28,17 +29,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Registrasi Pengguna'),
-        backgroundColor: Color(0xFF8E2DE2),
+        backgroundColor: const Color(0xFF8E2DE2),
         foregroundColor: Colors.white,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(builder: (_) => const WelcomeScreen()),
-              (route) => false,
-            );
-          },
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (_) => const WelcomeScreen()),
+            (route) => false,
+          ),
         ),
       ),
       body: Padding(
@@ -47,21 +46,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
           key: _formKey,
           child: ListView(
             children: [
+              // Nama Lengkap
               TextFormField(
                 controller: _namaController,
-                decoration: const InputDecoration(
-                  labelText: 'Nama Lengkap',
-                  border: OutlineInputBorder(),
-                ),
+                decoration: const InputDecoration(labelText: 'Nama Lengkap', border: OutlineInputBorder()),
                 validator: (v) => v!.isEmpty ? 'Nama wajib diisi' : null,
               ),
               const SizedBox(height: 12),
+
+              // NIK
               TextFormField(
                 controller: _nikController,
-                decoration: const InputDecoration(
-                  labelText: 'NIK',
-                  border: OutlineInputBorder(),
-                ),
+                decoration: const InputDecoration(labelText: 'NIK', border: OutlineInputBorder()),
                 keyboardType: TextInputType.number,
                 validator: (v) {
                   if (v!.isEmpty) return 'NIK wajib diisi';
@@ -70,6 +66,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 },
               ),
               const SizedBox(height: 12),
+
+              // Email
               TextFormField(
                 controller: _emailController,
                 decoration: const InputDecoration(
@@ -80,45 +78,39 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 keyboardType: TextInputType.emailAddress,
                 validator: (v) {
                   if (v!.isEmpty) return 'Email wajib diisi';
-                  if (!v.endsWith('@gmail.com')) {
-                    return 'Email harus berakhiran @gmail.com';
-                  }
+                  if (!v.endsWith('@gmail.com')) return 'Email harus @gmail.com';
                   return null;
                 },
               ),
               const SizedBox(height: 12),
+
+              // Alamat
               TextFormField(
                 controller: _alamatController,
-                decoration: const InputDecoration(
-                  labelText: 'Alamat',
-                  border: OutlineInputBorder(),
-                ),
-                maxLines: 1,
+                decoration: const InputDecoration(labelText: 'Alamat', border: OutlineInputBorder()),
                 validator: (v) => v!.isEmpty ? 'Alamat wajib diisi' : null,
               ),
               const SizedBox(height: 12),
+
+              // No. Telepon
               TextFormField(
                 controller: _noTelpController,
-                decoration: const InputDecoration(
-                  labelText: 'Nomor Telepon',
-                  border: OutlineInputBorder(),
-                ),
+                decoration: const InputDecoration(labelText: 'Nomor Telepon', border: OutlineInputBorder()),
                 keyboardType: TextInputType.phone,
                 validator: (v) {
                   if (v == null || v.isEmpty) return 'No. Telepon wajib diisi';
                   if (!RegExp(r'^08[0-9]{8,11}$').hasMatch(v)) {
-                    return 'Format nomor telepon salah (contoh: 081234567890)';
+                    return 'Format salah (contoh: 081234567890)';
                   }
                   return null;
                 },
               ),
               const SizedBox(height: 12),
+
+              // Username
               TextFormField(
                 controller: _usernameController,
-                decoration: const InputDecoration(
-                  labelText: 'Username',
-                  border: OutlineInputBorder(),
-                ),
+                decoration: const InputDecoration(labelText: 'Username', border: OutlineInputBorder()),
                 validator: (v) {
                   if (v == null || v.isEmpty) return 'Username wajib diisi';
                   if (v.length < 4) return 'Username minimal 4 karakter';
@@ -126,12 +118,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 },
               ),
               const SizedBox(height: 12),
+
+              // Password
               TextFormField(
                 controller: _passwordController,
-                decoration: const InputDecoration(
-                  labelText: 'Password',
-                  border: OutlineInputBorder(),
-                ),
+                decoration: const InputDecoration(labelText: 'Password', border: OutlineInputBorder()),
                 obscureText: true,
                 validator: (v) {
                   if (v!.isEmpty) return 'Password wajib diisi';
@@ -140,84 +131,68 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 },
               ),
               const SizedBox(height: 30),
+
+              // TOMBOL DAFTAR
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF8E2DE2),
-                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  backgroundColor: const Color(0xFF8E2DE2),
+                  padding: const EdgeInsets.symmetric(vertical: 18),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                 ),
                 onPressed: () async {
-                  if (_formKey.currentState!.validate()) {
-                    final newUser = User(
-                      fullName: _namaController.text.trim(),
-                      nik: _nikController.text.trim(),
-                      email: _emailController.text.trim().toLowerCase(),
-                      password: _passwordController.text,
-                      alamat: _alamatController.text.trim(),
-                      noTelp: _noTelpController.text.trim(),
-                      username: _usernameController.text.trim(),
-                    );
+                  if (!_formKey.currentState!.validate()) return;
 
-                    final prefs = await SharedPreferences.getInstance();
+                  final newUser = User(
+                    fullName: _namaController.text.trim(),
+                    nik: _nikController.text.trim(),
+                    email: _emailController.text.trim().toLowerCase(),
+                    alamat: _alamatController.text.trim(),
+                    noTelp: _noTelpController.text.trim(),
+                    username: _usernameController.text.trim(),
+                    password: _passwordController.text,
+                  );
 
-                    final String? usersJson = prefs.getString('users');
-                    List<User> userList = [];
-                    if (usersJson != null) {
-                      final List<dynamic> decoded = json.decode(usersJson);
-                      userList = decoded
-                          .map((e) => User.fromJson(e as Map<String, dynamic>))
-                          .toList();
-                    }
+                  final prefs = await SharedPreferences.getInstance();
+                  List<User> userList = [];
 
-                    bool isDuplicate = userList.any(
-                      (u) =>
-                          u.email.toLowerCase() ==
-                              newUser.email.toLowerCase() ||
-                          u.nik == newUser.nik,
-                    );
-
-                    
-                    if (isDuplicate) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Email atau NIK sudah terdaftar!'),
-                          backgroundColor: Colors.red,
-                        ),
-                      );
-                      return;
-                    }
-
-                    userList.add(newUser);
-                    await prefs.setString(
-                      'users',
-                      json.encode(userList.map((u) => u.toJson()).toList()),
-                    );
-
-                    await prefs.setString('current_user_email', newUser.email);
-                    await prefs.setString('current_user_name', newUser.fullName);
-
-                    
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Registrasi berhasil! Sedang masuk...'),
-                        backgroundColor: Colors.green,
-                      ),
-                    );
-
-                    await Future.delayed(const Duration(milliseconds: 1500));
-
-                    if (mounted) {
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (_) => const LoginScreen()),
-                        (route) => false,
-                      );
-                    }
+                  final String? usersJson = prefs.getString('users');
+                  if (usersJson != null) {
+                    userList = (json.decode(usersJson) as List)
+                        .map((e) => User.fromJson(e as Map<String, dynamic>))
+                        .toList();
                   }
+
+                  // Cek duplikat
+                  if (userList.any((u) => u.email == newUser.email || u.nik == newUser.nik)) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Email atau NIK sudah terdaftar!'), backgroundColor: Colors.red),
+                    );
+                    return;
+                  }
+
+                  // Simpan user baru
+                  userList.add(newUser);
+                  await prefs.setString('users', json.encode(userList.map((u) => u.toJson()).toList()));
+
+                  // PESAN SUKSES
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Registrasi berhasil! Silakan login'),
+                      backgroundColor: Colors.green,
+                      duration: Duration(seconds: 2),
+                    ),
+                  );
+
+                  await Future.delayed(const Duration(milliseconds: 1500));
+
+                  if (!mounted) return;
+
+                  // KEMBALI KE LOGIN SCREEN (BUKAN LANGSUNG KE HOME)
+                  Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
                 },
-                child: const Text(
-                  'Daftar',
-                  style: TextStyle(fontSize: 18, color: Colors.white),
-                ),
+                child: const Text('Daftar', style: TextStyle(fontSize: 18, color: Colors.white)),
               ),
             ],
           ),

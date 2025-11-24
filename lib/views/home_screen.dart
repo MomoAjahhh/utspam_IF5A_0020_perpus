@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'login_screen.dart';
 import 'book_list_screen.dart';
-import 'profile_screen.dart';
 import 'history_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -21,7 +20,6 @@ class _HomeScreenState extends State<HomeScreen> {
     _loadUserData();
   }
 
-  
   Future<void> _loadUserData() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
@@ -29,7 +27,6 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  
   Future<void> _handleLogout() async {
     showDialog(
       context: context,
@@ -55,7 +52,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 (route) => false,
               );
             },
-            child: const Text("Ya, Keluar", style: TextStyle(color: Colors.red)),
+            child: const Text(
+              "Ya, Keluar",
+              style: TextStyle(color: Colors.red),
+            ),
           ),
         ],
       ),
@@ -68,10 +68,14 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.grey[50],
       body: Column(
         children: [
-          
           Container(
             width: double.infinity,
-            padding: const EdgeInsets.only(top: 50, left: 24, right: 24, bottom: 24),
+            padding: const EdgeInsets.only(
+              top: 50,
+              left: 24,
+              right: 24,
+              bottom: 24,
+            ),
             color: Color(0xFF8E2DE2),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -108,12 +112,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: const Icon(Icons.logout, color: Colors.black),
                     tooltip: 'Keluar Aplikasi',
                   ),
-                )
+                ),
               ],
             ),
           ),
 
-          
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(24.0),
@@ -130,7 +133,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const BookListScreen()),
+                        MaterialPageRoute(
+                          builder: (context) => const BookListScreen(),
+                        ),
                       );
                     },
                   ),
@@ -141,7 +146,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => HistoryScreen()),
+                        MaterialPageRoute(
+                          builder: (context) => HistoryScreen(),
+                        ),
                       );
                     },
                   ),
@@ -150,10 +157,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: Icons.person_outline,
                     color: Colors.green,
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const ProfileScreen()),
-                      );
+                      Navigator.pop(context); // tutup drawer kalau pakai drawer
+                      Navigator.pushNamed(context, '/profile');
                     },
                   ),
                 ],
@@ -165,7 +170,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  
   Widget _buildMenuCard({
     required String title,
     required IconData icon,
