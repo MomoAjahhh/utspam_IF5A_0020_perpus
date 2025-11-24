@@ -1,7 +1,7 @@
 Nama : Muhammad Araka Ridhwan Akbar
 NIM : 3012310020
 Kelas : IF-5A
-Maaf pak punya saya belum selesai karena laptop saya mengalami gangguan 🙏
+
 <img width="751" height="878" alt="Screenshot 2025-11-24 190536" src="https://github.com/user-attachments/assets/6d1961ee-af21-4294-b14c-1f5b2356c1d2" />
 <img width="749" height="880" alt="Screenshot 2025-11-24 190552" src="https://github.com/user-attachments/assets/73b3e8ad-332e-4b69-9356-4e063d325d1f" />
 <img width="749" height="882" alt="Screenshot 2025-11-24 190647" src="https://github.com/user-attachments/assets/c81f0dcb-2f0a-4f7a-a74e-6032d2a1a11f" />
