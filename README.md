@@ -9,3 +9,4 @@ Maaf pak punya saya belum selesai karena laptop saya mengalami gangguan 🙏
 <img width="747" height="880" alt="Screenshot 2025-11-24 190724" src="https://github.com/user-attachments/assets/039974e2-59d2-4306-8dc9-9d6d60ee99af" />
 <img width="753" height="879" alt="Screenshot 2025-11-24 190737" src="https://github.com/user-attachments/assets/9a5c1919-b325-49a0-bc63-1b58765f9513" />
 <img width="748" height="879" alt="Screenshot 2025-11-24 190810" src="https://github.com/user-attachments/assets/da033e1f-8ac5-4a6f-b968-13bdf973b4e5" />
+<img width="749" height="881" alt="Screenshot 2025-11-24 213451" src="https://github.com/user-attachments/assets/7c48b496-7456-40c5-8d35-4d1158893be3" />
