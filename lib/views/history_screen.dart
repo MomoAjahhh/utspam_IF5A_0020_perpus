@@ -31,7 +31,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Riwayat Pinjam Buku"),
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Color(0xFF8E2DE2),
         foregroundColor: Colors.white,
       ),
       body: FutureBuilder<List<Transaction>>(
@@ -125,7 +125,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Color(0xFF8E2DE2),
         child: Icon(Icons.home, color: Colors.white),
         onPressed: () {
           Navigator.pushReplacement(

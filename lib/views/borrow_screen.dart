@@ -51,7 +51,7 @@ class _BorrowScreenState extends State<BorrowScreen> {
     final tr = Transaction(
       id: null,
       userId: widget.userId,
-      bookId: int.parse(widget.book.id),   // aman
+      bookId: int.parse(widget.book.id),   
       tglPinjam: tglCtr.text,
       durasiPinjam: int.parse(durasiCtr.text),
       totalBiaya: total,

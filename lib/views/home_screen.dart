@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 import 'login_screen.dart';
 import 'book_list_screen.dart';
 import 'history_screen.dart';
@@ -22,9 +23,24 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> _loadUserData() async {
     final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _fullName = prefs.getString('userName') ?? "Anggota";
-    });
+    final String? userJson = prefs.getString('current_user');
+
+    if (userJson != null) {
+      try {
+        final userData = jsonDecode(userJson) as Map<String, dynamic>;
+        setState(() {
+          _fullName = userData['nama_lengkap'] ?? "Anggota";
+        });
+      } catch (e) {
+        setState(() {
+          _fullName = "Anggota";
+        });
+      }
+    } else {
+      setState(() {
+        _fullName = "Anggota";
+      });
+    }
   }
 
   Future<void> _handleLogout() async {
@@ -157,7 +173,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: Icons.person_outline,
                     color: Colors.green,
                     onTap: () {
-                      Navigator.pop(context); // tutup drawer kalau pakai drawer
                       Navigator.pushNamed(context, '/profile');
                     },
                   ),

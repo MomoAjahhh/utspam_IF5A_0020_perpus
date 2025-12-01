@@ -8,17 +8,10 @@ import 'package:peminjaman_buku/views/welcome_screen.dart';
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
-  Future<void> _logout(BuildContext context) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.remove('current_user'); // hapus session
-
-    if (!context.mounted) return;
-    Navigator.pushNamedAndRemoveUntil(
-      context,
-      '/welcome', // BALIK KE WELCOME SCREEN
-      (route) => false,
-    );
-  }
+  Future<void> _backToHome(BuildContext context) async {
+  if (!context.mounted) return;
+  Navigator.pop(context);
+}
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +40,7 @@ class ProfileScreen extends StatelessWidget {
           return SingleChildScrollView(
             child: Column(
               children: [
-                // HEADER ORANYE + AVATAR + NAMA + USERNAME
+                
                 Container(
                   width: double.infinity,
                   color: Color(0xFF8E2DE2),
@@ -79,7 +72,6 @@ class ProfileScreen extends StatelessWidget {
 
                 const SizedBox(height: 30),
 
-                // DETAIL AKUN
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Align(
@@ -115,17 +107,16 @@ class ProfileScreen extends StatelessWidget {
 
                 const SizedBox(height: 50),
 
-                // TOMBOL KELUAR APLIKASI
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30),
                   child: SizedBox(
                     width: double.infinity,
                     height: 50,
                     child: ElevatedButton.icon(
-                      onPressed: () => _logout(context),
+                      onPressed: () => _backToHome(context),
                       icon: const Icon(Icons.exit_to_app),
                       label: const Text(
-                        "KELUAR APLIKASI",
+                        "KEMBALI KE BERANDA",
                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                       ),
                       style: ElevatedButton.styleFrom(

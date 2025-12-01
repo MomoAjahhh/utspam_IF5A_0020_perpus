@@ -70,7 +70,7 @@ class DbHelper {
           'title': "Pemrograman Flutter Dasar",
           'genre': "Teknologi",
           'pricePerDay': 20000,
-          'coverUrl': "https://picsum.photos/seed/book1/300/400",
+          'coverUrl': "ssets/images/PemrogramanFlutterDasar.jpg",
           'synopsis': "Belajar membuat aplikasi mobile dengan Flutter dari nol.",
         },
         {
@@ -78,7 +78,7 @@ class DbHelper {
           'title': "Algoritma dan Struktur Data",
           'genre': "Algoritma",
           'pricePerDay': 7000,
-          'coverUrl': "https://picsum.photos/seed/book2/300/400",
+          'coverUrl': "assets/images/AlgoritmadanStrukturData.jpg",
           'synopsis': "Buku klasik algoritma dengan contoh bahasa C dan Java.",
         },
         {

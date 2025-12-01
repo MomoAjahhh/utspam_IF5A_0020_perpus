@@ -105,7 +105,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             }
 
                             if (loggedInUser != null) {
-                              // SIMPAN SESSION DENGAN CARA PALING AMAN (tanpa toJson)
                               final prefs =
                                   await SharedPreferences.getInstance();
                               await prefs.setString(
@@ -118,7 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   'telp': loggedInUser.noTelp,
                                   'username': loggedInUser.username,
                                   'password': loggedInUser
-                                      .password, // boleh disimpan karena lokal
+                                      .password, 
                                 }),
                               );
 

@@ -66,7 +66,7 @@ class _BookListScreenState extends State<BookListScreen> {
     );
   }
 
-  // Card buku versi modern (mirip versi 2)
+  
   Widget _buildBookCard(Book book) {
     return Card(
       elevation: 3,
@@ -74,7 +74,7 @@ class _BookListScreenState extends State<BookListScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Cover buku dari URL
+          
           Expanded(
             child: ClipRRect(
               borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
@@ -94,13 +94,12 @@ class _BookListScreenState extends State<BookListScreen> {
             ),
           ),
 
-          // Informasi buku
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Genre
+
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                   decoration: BoxDecoration(
@@ -117,7 +116,6 @@ class _BookListScreenState extends State<BookListScreen> {
                 ),
                 const SizedBox(height: 6),
 
-                // Judul
                 Text(
                   book.title,
                   maxLines: 2,
@@ -126,14 +124,12 @@ class _BookListScreenState extends State<BookListScreen> {
                 ),
                 const SizedBox(height: 8),
 
-                // Harga
                 Text(
                   _formatRupiah(book.pricePerDay),
                   style: const TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 8),
 
-                // Tombol Pinjam
                 SizedBox(
                   width: double.infinity,
                   height: 32,

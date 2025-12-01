@@ -46,7 +46,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           key: _formKey,
           child: ListView(
             children: [
-              // Nama Lengkap
+              
               TextFormField(
                 controller: _namaController,
                 decoration: const InputDecoration(labelText: 'Nama Lengkap', border: OutlineInputBorder()),
@@ -54,7 +54,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               const SizedBox(height: 12),
 
-              // NIK
               TextFormField(
                 controller: _nikController,
                 decoration: const InputDecoration(labelText: 'NIK', border: OutlineInputBorder()),
@@ -67,7 +66,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               const SizedBox(height: 12),
 
-              // Email
               TextFormField(
                 controller: _emailController,
                 decoration: const InputDecoration(
@@ -84,7 +82,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               const SizedBox(height: 12),
 
-              // Alamat
               TextFormField(
                 controller: _alamatController,
                 decoration: const InputDecoration(labelText: 'Alamat', border: OutlineInputBorder()),
@@ -92,7 +89,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               const SizedBox(height: 12),
 
-              // No. Telepon
               TextFormField(
                 controller: _noTelpController,
                 decoration: const InputDecoration(labelText: 'Nomor Telepon', border: OutlineInputBorder()),
@@ -107,7 +103,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               const SizedBox(height: 12),
 
-              // Username
               TextFormField(
                 controller: _usernameController,
                 decoration: const InputDecoration(labelText: 'Username', border: OutlineInputBorder()),
@@ -119,7 +114,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               const SizedBox(height: 12),
 
-              // Password
               TextFormField(
                 controller: _passwordController,
                 decoration: const InputDecoration(labelText: 'Password', border: OutlineInputBorder()),
@@ -132,7 +126,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               const SizedBox(height: 30),
 
-              // TOMBOL DAFTAR
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF8E2DE2),
@@ -164,7 +157,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         .toList();
                   }
 
-                  // Cek duplikat
                   if (userList.any((u) => u.email == newUser.email || u.nik == newUser.nik)) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text('Email atau NIK sudah terdaftar!'), backgroundColor: Colors.red),
@@ -172,11 +164,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     return;
                   }
 
-                  // Simpan user baru
                   userList.add(newUser);
                   await prefs.setString('users', json.encode(userList.map((u) => u.toJson()).toList()));
 
-                  // PESAN SUKSES
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       content: Text('Registrasi berhasil! Silakan login'),
@@ -189,7 +179,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                   if (!mounted) return;
 
-                  // KEMBALI KE LOGIN SCREEN (BUKAN LANGSUNG KE HOME)
                   Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
                 },
                 child: const Text('Daftar', style: TextStyle(fontSize: 18, color: Colors.white)),
